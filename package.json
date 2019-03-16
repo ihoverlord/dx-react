@@ -1,7 +1,7 @@
 {
   "name": "dx-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generate react things from your terminal. For starters React Component",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/himakargalipuri/dx-react.git"
+    "url": "git+https://github.com/thebiryaniboy/dx-react.git"
   },
   "author": "Himakar Reddy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/himakargalipuri/dx-react/issues"
+    "url": "https://github.com/thebiryaniboy/dx-react/issues"
   },
-  "homepage": "https://github.com/himakargalipuri/dx-react#readme",
+  "homepage": "https://github.com/thebiryaniboy/dx-react#readme",
   "dependencies": {
     "commander": "^2.19.0",
     "ejs": "^2.6.1",
