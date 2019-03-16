@@ -9,11 +9,11 @@ _vName = (name) => {
 }
 
 generate = (name) => {
-    if (!fs.existsSync('Components')) {
-        fs.mkdirSync('Components')
+    if (!fs.existsSync('src/Components')) {
+        fs.mkdirSync('src/Components')
     }
     name = name.toLowerCase()
-    destination = (process.cwd()).replace(/\\/g,"/") + '/Components/' + name + '.js'
+    destination = (process.cwd()).replace(/\\/g,"/") + '/src/Components/' + name + '.js'
     source = (__dirname).replace(/\\/g,"/")  + '/template.js.ejs'
 
     ejs.renderFile(source, {cName: _.capitalize(name)}, (err, html) => {
@@ -21,7 +21,7 @@ generate = (name) => {
         
         fs.writeFile(destination, html, (err) => {
             if (err) return console.log('Error : ' + err.toString());
-            console.log('Component Created : Components/' + name + '.js');
+            console.log('Component Created : src/Components/' + name + '.js');
         });
 
     });
