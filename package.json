@@ -1,0 +1,27 @@
+{
+  "name": "dx-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "dx-open": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himakargalipuri/dx-react.git"
+  },
+  "author": "Himakar Reddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himakargalipuri/dx-react/issues"
+  },
+  "homepage": "https://github.com/himakargalipuri/dx-react#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "ejs": "^2.6.1",
+    "lodash": "^4.17.11"
+  }
+}
