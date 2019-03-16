@@ -1,6 +1,6 @@
 {
   "name": "dx-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate react things from your terminal. For starters React Component",
   "main": "index.js",
   "scripts": {
