@@ -48,6 +48,6 @@ No name required. This command will generate `router.js` file in your `src` fold
 
 Generate a form template with validations, onchange events
 
-    dx-react -fc YOUR_NAME
+    dx-react -f YOUR_NAME
 All component rules apply here.
 
