@@ -16,7 +16,7 @@ Generate a new component from your terminal
 
 Thats it. It will do its magic. It will generate a file with custom Component code, like this : 
 ![Screen shot of to be generated code](http://i66.tinypic.com/2ldvt48.jpg)
-    
+
 
 **Rules :** 
 
@@ -24,6 +24,27 @@ Thats it. It will do its magic. It will generate a file with custom Component co
  - No Number,  Special character, spaces are allowed for a name
  - A `Component` folder is created if not exists and all the generated files are stored here. 
  - The given name is converted to lowercase to process
+
+## Router
+Generate a router file
+
+    dx-react -r
+ 
+No name required. This command will generate `router.js` file in your `src` folder. 
+
+**Rules**
+
+ - Import components to your `router.js` file
+ - Navbar template is added. Add links as you need
+ - Routes template is added. Uncomment and declare routes
+ - Once done, change the below code in your `index.js` file.
+ 
+
+	  `import Router from './router';`
+
+	  `ReactDOM.render(<Router />, document.getElementById('root'));`
+
+ 
 
 ## Things to follow
 
