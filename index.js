@@ -5,7 +5,7 @@ const ejs = require('ejs')
 const _ = require('lodash')
 
 _vName = (name) => {
-    return /^[a-zA-Z]+$/.test(name)
+    return /^[a-zA-Z]+$/.test(name) ? true : console.log('Enter a name to process and generate')
 }
 
 generate = (name) => {
@@ -29,16 +29,25 @@ generate = (name) => {
 
 const genRouter = () => {
 
-    fs.copyFile('router.template.js', '/src/router.js', (err) => {
+    destination = (process.cwd()).replace(/\\/g, "/") + '/router.js'
+    source = (__dirname).replace(/\\/g, "/") + '/router.template.js'
+
+    if(fs.existsSync(destination)) return console.log('File already exists : '+destination)
+
+    fs.copyFile(source, destination, (err) => {
         if (err) return console.log(err.toString());
         console.log('Router template generated. Now follow these steps : ');
+        console.log(' ')
         console.log('Open router.js file, Import Components and Create Routes. ')
         console.log('Navbar template has been added, update the navbar with router links')
+        console.log(' ')
         console.log('One last step :')
+        console.log(' ')
         console.log('Go to index.js file and copy paste the below code : ')
         console.log("import Router from './router';")
 
         console.log("ReactDOM.render(<Router />, document.getElementById('root'));")
+        console.log(' ')
         console.log('You are done. Now!!!')
     });
 
@@ -54,11 +63,7 @@ run = () => {
         .option('-c, --component [component]', 'Enter the name you want to create a component')
         .option('-r, --router [router]', 'Create router')
         .parse(process.argv);
-    if (program.component) {
-        doTheMagic(program.component)
-    } else {
-        console.log('Enter a name to process and generate')
-    }
+    if (program.component) doTheMagic(program.component)
     if (program.router) genRouter()
 }
 
