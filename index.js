@@ -29,7 +29,7 @@ generate = (name) => {
 
 const genRouter = () => {
 
-    destination = (process.cwd()).replace(/\\/g, "/") + '/router.js'
+    destination = (process.cwd()).replace(/\\/g, "/") + '/src/router.js'
     source = (__dirname).replace(/\\/g, "/") + '/router.template.js'
 
     if(fs.existsSync(destination)) return console.log('File already exists : '+destination)
