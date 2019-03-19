@@ -44,11 +44,10 @@ No name required. This command will generate `router.js` file in your `src` fold
 
 	  `ReactDOM.render(<Router />, document.getElementById('root'));`
 
- 
+ ## Form 
 
-## Things to follow
+Generate a form template with validations, onchange events
 
- - Router file
- - Component with Form and custom fields
-
+    dx-react -fc YOUR_NAME
+All component rules apply here.
 

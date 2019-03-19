@@ -1,7 +1,7 @@
 {
   "name": "dx-react",
-  "version": "1.0.6",
-  "description": "Generate react things from your terminal. For starters React Component, router file",
+  "version": "1.0.7",
+  "description": "Generate react things from your terminal.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
