@@ -63,7 +63,7 @@ run = () => {
     program
         .version('0.1.0')
         .option('-c, --component [component]', 'Enter the name you want to create a component')
-        .option('-fc, --form [form]', 'Enter the name you want to create a form')
+        .option('-f, --form [form]', 'Enter the name you want to create a form')
         .option('-r, --router [router]', 'Create router')
         .parse(process.argv);
     if (program.component) doTheMagic(program.component, 'component')
