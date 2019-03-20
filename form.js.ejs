@@ -104,9 +104,9 @@ class <%= cName %> extends React.Component {
 
    render() {
       return (
-         <div id="main-registration-container">
-            <div id="register">
-               <h3>Registration page</h3>
+         <div id="main-container">
+            <div id="form">
+               <h3>Form page</h3>
                <form method="post" name="Form" onSubmit={this.submitForm} >
                   <label>Name</label>
                   <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange} />
@@ -120,7 +120,7 @@ class <%= cName %> extends React.Component {
                   <label>Password</label>
                   <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
                   <div className="errorMsg">{this.state.errors.password}</div>
-                  <input type="submit" className="button" value="Register" />
+                  <input type="submit" className="button" value="Submit" />
                </form>
             </div>
          </div>

@@ -5,24 +5,30 @@ const ejs = require('ejs')
 const _ = require('lodash')
 
 _vName = (name) => {
-    return /^[a-zA-Z]+$/.test(name) ? true : console.log('Enter a name to process and generate')
+    return /^[a-zA-Z]+$/.test(name) 
 }
 
-generate = (name, type) => {
-    if (!fs.existsSync('src/Components')) {
-        fs.mkdirSync('src/Components')
-    }
+generate = (name, type, folder) => {
     name = name.toLowerCase()
-    destination = (process.cwd()).replace(/\\/g, "/") + '/src/Components/' + name + '.js'
+    if (!fs.existsSync('src/Components/')) fs.mkdirSync('src/Components/')
+    console.log(folder)
+    const temp = folder ? 'src/Components/'+name+'/' : 'src/Components/'
+    if (folder && !fs.existsSync(temp)) fs.mkdirSync(temp) 
+    else if (!folder && fs.existsSync(temp+'/'+name+'.js')) return console.log('Component file already exists : /src/Components/'+name+'.js') 
+
+    else if(folder && fs.existsSync(temp)) return console.log('A folder with the given name already exists in the Components folder : '+temp)
+    destination = folder ? process.cwd() + '/' + temp + 'index.js' : process.cwd() + '/' + temp + name + '.js'
     source = (__dirname).replace(/\\/g, "/") + '/'+type+'.js.ejs'
 
     ejs.renderFile(source, { cName: _.capitalize(name) }, (err, html) => {
-        if (err) console.error(err);
+        if (err) return console.error('2. '+err.toString());
 
         fs.writeFile(destination, html, (err) => {
-            if (err) return console.log('Error : ' + err.toString());
-            console.log(type + ' Created : src/Components/' + name + '.js');
+            if (err) return console.log('1. ' + err.toString());
+            console.log(type + ' Created : '+ temp + name + '.js');
+            if(folder) fs.writeFileSync(temp+name+'.css'), console.log('Created : '+temp+name+'.css')
         });
+
 
     });
 }
@@ -53,21 +59,26 @@ const genRouter = () => {
 
 }
 
-doTheMagic = (input, type) => {
-    if(!_vName(input)) return console.log('Error : Only Alphabets are allowed for name')
+doTheMagic = (input, type, folder) => {
+    if (!fs.existsSync('package.json')) return console.log('You are not on a project file. Package.json file is missing')
+    if(!_vName(input)) return console.log(_vName(input)+'Error : Only Alphabets are allowed for name')
     if(type === 'router') return genRouter()
-    generate(input, type) 
+    generate(input, type, folder) 
 }
 
 run = () => { 
     program
         .version('0.1.0')
-        .option('-c, --component [component]', 'Enter the name you want to create a component')
-        .option('-f, --form [form]', 'Enter the name you want to create a form')
-        .option('-r, --router [router]', 'Create router')
+        .option('component [component]', 'Enter  the name you want to create a component in a folder with css files')
+        .option('form [form]', 'Enter name for the component form to be created in a folder with css')
+        .option('file [file]', 'Enter the name you want to create a component')
+        .option('justform [justform]', 'Enter the name you want to create a form')
+        .option('router [router]', 'Create router')
         .parse(process.argv);
-    if (program.component) doTheMagic(program.component, 'component')
-    if (program.form) doTheMagic(program.form, 'form')
+    if (program.component) doTheMagic(program.component, 'component', true)
+    if (program.form) doTheMagic(program.form, 'form', true)
+    if (program.file) doTheMagic(program.file, 'component', false)
+    if (program.justform) doTheMagic(program.justform, 'form', false)
     if (program.router) genRouter()
 }
 
